@@ -1,6 +1,7 @@
 package com.example.Firebase.Controller;
 
 import com.example.Firebase.Person.Person;
+import com.example.Firebase.Person.UserData;
 import com.example.Firebase.servicePackage.FirebaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class Controller {
     }
 
     @PostMapping("/create")
-    public String createuser(@RequestBody Person person) throws ExecutionException, InterruptedException {
-        return firebaseService.saveUserDetails(person);
+    public UserData createuser(@RequestBody UserData userData) throws ExecutionException, InterruptedException {
+        return firebaseService.saveUserDetails(userData);
 
     }
 

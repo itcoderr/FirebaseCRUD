@@ -1,6 +1,7 @@
 package com.example.Firebase.servicePackage;
 
 import com.example.Firebase.Person.Person;
+import com.example.Firebase.Person.UserData;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -13,10 +14,10 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class FirebaseService {
-    public String saveUserDetails(Person person) throws ExecutionException, InterruptedException {
+    public UserData saveUserDetails(UserData userData) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("users").document(person.getName()).set(person);
-        return collectionsApiFuture.get().getUpdateTime().toString();
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("User").document(userData.getGoogleID()).set(userData);
+        return userData;
 
     }
 
